@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🕐 Die Uhrzeit - Practica las Horas en Alemán</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -178,6 +178,10 @@
             background: linear-gradient(135deg, #a855f7, #9333ea);
         }
 
+        .menu-card-icon.grammar {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
         .menu-card-content h3 {
             font-size: 1.1rem;
             font-weight: 600;
@@ -239,6 +243,7 @@
             border-radius: 14px;
             padding: 5px;
             border: 1px solid var(--glass-border);
+            flex-wrap: wrap;
         }
 
         .study-tab {
@@ -663,6 +668,16 @@
             letter-spacing: 2px;
         }
 
+        .date-display-large {
+            display: none;
+            font-size: 3rem;
+            margin: 30px 0;
+            text-align: center;
+            color: var(--accent-primary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
         /* Answer Area */
         .answer-section {
             flex: 1;
@@ -738,6 +753,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
+            -webkit-user-select: none;
             user-select: none;
         }
 
@@ -760,6 +776,25 @@
         .word-chip.in-answer {
             opacity: 0.3;
             pointer-events: none;
+        }
+
+        .grammar-question-text {
+            display: none;
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--text-primary);
+        }
+
+        .grammar-pronoun {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .credit-text {
+            font-size: 0.8rem;
+            color: #8b5cf6;
+            margin-top: 8px;
         }
 
         /* Feedback Section */
@@ -983,7 +1018,7 @@
                 <div class="clock-icon">🕐</div>
                 <h1>Die Uhrzeit</h1>
                 <p>Aprende a decir las horas en alemán</p>
-                <p style="font-size: 0.8rem; color: #8b5cf6; margin-top: 8px;">✨ GRACIAS A SERGIO ✨</p>
+                <p class="credit-text">✨ GRACIAS A SERGIO ✨</p>
             </div>
 
             <div class="menu-section">
@@ -1042,6 +1077,27 @@
                 </div>
             </div>
 
+
+            <div class="menu-section">
+                <h2>📘 Grammatik (Gramática)</h2>
+                <div class="menu-card" onclick="startGame('possessive')">
+                    <div class="menu-card-icon grammar">🎒</div>
+                    <div class="menu-card-content">
+                        <h3>Possessivartikel</h3>
+                        <p>mein, dein, sein, ihr...</p>
+                    </div>
+                    <span class="menu-card-arrow">→</span>
+                </div>
+                <div class="menu-card" onclick="startGame('modal')">
+                    <div class="menu-card-icon grammar">⚡</div>
+                    <div class="menu-card-content">
+                        <h3>Modalverben</h3>
+                        <p>müssen, können, wollen</p>
+                    </div>
+                    <span class="menu-card-arrow">→</span>
+                </div>
+            </div>
+
             <div class="menu-section">
                 <h2>📚 Aprender</h2>
                 <div class="menu-card" onclick="showScreen('studyScreen')">
@@ -1066,6 +1122,8 @@
                 <button class="study-tab active" onclick="showStudyTab('unofficial')">🗣️ No Oficial</button>
                 <button class="study-tab" onclick="showStudyTab('official')">📢 Oficial</button>
                 <button class="study-tab" onclick="showStudyTab('birthday')">🎂 Geburtstage</button>
+                <button class="study-tab" onclick="showStudyTab('possessive')">🎒 Possessiv</button>
+                <button class="study-tab" onclick="showStudyTab('modal')">⚡ Modal</button>
             </div>
 
             <div class="study-content">
@@ -1345,7 +1403,156 @@
                     </div>
                 </div>
             </div>
+
+            <!-- POSSESSIVE CONTENT -->
+            <div class="study-tab-content" id="studyPossessive">
+                <div class="study-card">
+                    <h3>🎒 ¿De quién es? (Possessivartikel)</h3>
+                    <p>Los artículos posesivos indican pertenencia. Cambian según la persona (yo -> mi) y el género de
+                        la cosa poseída.</p>
+                </div>
+
+                <div class="study-card">
+                    <h3>1️⃣ La base (Nominativ)</h3>
+                    <table class="time-table">
+                        <tr>
+                            <th>Persona</th>
+                            <th>Posesivo</th>
+                            <th>Español</th>
+                        </tr>
+                        <tr>
+                            <td>ich</td>
+                            <td><strong>mein</strong></td>
+                            <td>mi</td>
+                        </tr>
+                        <tr>
+                            <td>du</td>
+                            <td><strong>dein</strong></td>
+                            <td>tu</td>
+                        </tr>
+                        <tr>
+                            <td>er (él) / es (neut)</td>
+                            <td><strong>sein</strong></td>
+                            <td>su (de él)</td>
+                        </tr>
+                        <tr>
+                            <td>sie (ella) / sie (pl)</td>
+                            <td><strong>ihr</strong></td>
+                            <td>su (de ella/ellos)</td>
+                        </tr>
+                        <tr>
+                            <td>wir</td>
+                            <td><strong>unser</strong></td>
+                            <td>nuestro</td>
+                        </tr>
+                        <tr>
+                            <td>ihr</td>
+                            <td><strong>euer</strong></td>
+                            <td>vuestro</td>
+                        </tr>
+                        <tr>
+                            <td>Sie (Usted)</td>
+                            <td><strong>Ihr</strong></td>
+                            <td>su (de Usted)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>⚠️ La Terminación (Endung)</h4>
+                    <p>¡El posesivo debe coincidir con el sustantivo que le sigue!</p>
+                    <br>
+                    <p>🟦 <strong>Masculino / Neutro:</strong> NO se añade nada.</p>
+                    <p>• Das ist <strong>mein</strong> Vater (m).</p>
+                    <p>• Das ist <strong>dein</strong> Buch (n).</p>
+                    <br>
+                    <p>🟥 <strong>Femenino / Plural:</strong> Se añade <strong>-e</strong>.</p>
+                    <p>• Das ist <strong>meine</strong> Mutter (f).</p>
+                    <p>• Das sind <strong>seine</strong> Eltern (pl).</p>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>ℹ️ Ojo con 'euer'</h4>
+                    <p>Cuando añadimos la 'e' a <strong>euer</strong>, pierde una 'e' intermedia:</p>
+                    <p>euer + e = <strong>eure</strong> (no euere)</p>
+                </div>
+            </div>
+
+            <!-- MODAL CONTENT -->
+            <div class="study-tab-content" id="studyModal">
+                <div class="study-card">
+                    <h3>⚡ Verbos Modales</h3>
+                    <p>Modifican el significado de una acción (deber, poder, querer). Son irregulares en singular.</p>
+                </div>
+
+                <div class="study-card">
+                    <h3>1️⃣ Conjugación (Presente)</h3>
+                    <table class="time-table">
+                        <tr>
+                            <th> </th>
+                            <th>müssen<br><small>(deber)</small></th>
+                            <th>können<br><small>(poder)</small></th>
+                            <th>wollen<br><small>(querer)</small></th>
+                        </tr>
+                        <tr>
+                            <td>ich</td>
+                            <td>muss</td>
+                            <td>kann</td>
+                            <td>will</td>
+                        </tr>
+                        <tr>
+                            <td>du</td>
+                            <td>musst</td>
+                            <td>kannst</td>
+                            <td>willst</td>
+                        </tr>
+                        <tr>
+                            <td>er/sie/es</td>
+                            <td><strong>muss</strong></td>
+                            <td><strong>kann</strong></td>
+                            <td><strong>will</strong></td>
+                        </tr>
+                        <tr>
+                            <td>wir</td>
+                            <td>müssen</td>
+                            <td>können</td>
+                            <td>wollen</td>
+                        </tr>
+                        <tr>
+                            <td>ihr</td>
+                            <td>müsst</td>
+                            <td>könnt</td>
+                            <td>wollt</td>
+                        </tr>
+                        <tr>
+                            <td>sie/Sie</td>
+                            <td>müssen</td>
+                            <td>können</td>
+                            <td>wollen</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>⚠️ Regla de Oro</h4>
+                    <p>La 1ª y 3ª persona del singular son <strong>IGUALES</strong> y no tienen 't'.</p>
+                    <p>✅ er kann (NO er kannt)</p>
+                    <p>✅ ich will (NO ich wille)</p>
+                </div>
+
+                <div class="study-card">
+                    <h3>2️⃣ Estructura de la frase</h3>
+                    <p>El verbo modal va conjugado en posición 2. El otro verbo va al <strong>FINAL</strong> en
+                        infinitivo.</p>
+                    <br>
+                    <div class="example-row">
+                        <span class="example-german">Ich <strong>muss</strong> heute lernen.</span>
+                        <br><small>(Debo aprender hoy)</small>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <!-- ========== GAME SCREEN ========== -->
         <div class="screen" id="gameScreen">
@@ -1393,6 +1600,8 @@
 
             <div class="digital-time" id="digitalTime">07:30</div>
             <div class="date-display" id="dateDisplay">04.09.</div>
+
+            <div class="grammar-question-text" id="grammarQuestion"></div>
 
             <div class="answer-section">
                 <p class="instruction">Ordena las palabras para formar la hora correcta:</p>
@@ -1458,8 +1667,9 @@
                 </div>
             </div>
 
+
             <div class="digital-time" id="writingDigitalTime">07:30</div>
-            <div class="date-display" id="writingDateDisplay" style="display:none; font-size: 3rem; margin: 30px 0;">
+            <div class="date-display-large" id="writingDateDisplay">
                 04.09.
             </div>
 
@@ -1470,7 +1680,7 @@
                         <span id="text1">Escribe la forma coloquial:</span>
                     </label>
                     <input type="text" class="time-input" id="unofficialInput" placeholder="Es ist..."
-                        autocomplete="off" autocapitalize="off">
+                        autocomplete="off">
                     <div class="input-feedback" id="unofficialFeedback"></div>
                 </div>
 
@@ -1479,8 +1689,7 @@
                         <span class="badge official" id="badge2">Oficial</span>
                         <span id="text2">Escribe la forma formal:</span>
                     </label>
-                    <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off"
-                        autocapitalize="off">
+                    <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off">
                     <div class="input-feedback" id="officialFeedback"></div>
                 </div>
 
@@ -1489,6 +1698,8 @@
                     <button class="btn btn-primary" onclick="checkWritingAnswer()">✓ Comprobar</button>
                 </div>
             </div>
+
+
         </div>
     </div>
 
@@ -1509,9 +1720,15 @@
             } else if (tab === 'official') {
                 document.querySelector('.study-tab:nth-child(2)').classList.add('active');
                 document.getElementById('studyOfficial').classList.add('active');
-            } else {
+            } else if (tab === 'birthday') {
                 document.querySelector('.study-tab:nth-child(3)').classList.add('active');
                 document.getElementById('studyBirthday').classList.add('active');
+            } else if (tab === 'possessive') {
+                document.querySelector('.study-tab:nth-child(4)').classList.add('active');
+                document.getElementById('studyPossessive').classList.add('active');
+            } else if (tab === 'modal') {
+                document.querySelector('.study-tab:nth-child(5)').classList.add('active');
+                document.getElementById('studyModal').classList.add('active');
             }
         }
 
@@ -1524,11 +1741,27 @@
             const clockContainer = document.querySelector('.clock-container');
             const digitalTime = document.getElementById('digitalTime');
             const dateDisplay = document.getElementById('dateDisplay');
+            const grammarQuestion = document.getElementById('grammarQuestion');
 
             // Reset visibility
             if (clockContainer) clockContainer.style.display = 'flex';
             if (digitalTime) digitalTime.style.display = 'block';
             if (dateDisplay) dateDisplay.style.display = 'none';
+            if (grammarQuestion) grammarQuestion.style.display = 'none';
+
+            // Update Instruction Text
+            const instruction = document.querySelector('.instruction');
+            if (instruction) {
+                if (mode === 'possessive') {
+                    instruction.textContent = 'Completa la frase con el posesivo correcto:';
+                } else if (mode === 'modal') {
+                    instruction.textContent = 'Ordena la frase correctamente:';
+                } else if (mode.startsWith('birthday')) {
+                    instruction.textContent = 'Ordena las palabras para formar la fecha correcta:';
+                } else {
+                    instruction.textContent = 'Ordena las palabras para formar la hora correcta:';
+                }
+            }
 
             if (mode === 'unofficial') {
                 title.textContent = '🗣️ Forma No Oficial';
@@ -1536,18 +1769,29 @@
             } else if (mode === 'official') {
                 title.textContent = '📢 Forma Oficial';
                 title.className = 'official';
-            } else if (mode === 'birthday_words') {
-                title.textContent = '📅 Geburtstage (Nombres)';
+            } else if (mode.startsWith('birthday')) {
+                // ... birthday logic existing ...
+                if (mode === 'birthday_words') {
+                    title.textContent = '📅 Geburtstage (Nombres)';
+                } else if (mode === 'birthday_numbers') {
+                    title.textContent = '🔢 Geburtstage (Números)';
+                }
                 title.className = 'birthday';
                 if (clockContainer) clockContainer.style.display = 'none';
                 if (digitalTime) digitalTime.style.display = 'none';
                 if (dateDisplay) dateDisplay.style.display = 'block';
-            } else if (mode === 'birthday_numbers') {
-                title.textContent = '🔢 Geburtstage (Números)';
-                title.className = 'birthday';
+            } else if (mode === 'possessive') {
+                title.textContent = '🎒 Possessivartikel';
+                title.className = 'grammar';
                 if (clockContainer) clockContainer.style.display = 'none';
                 if (digitalTime) digitalTime.style.display = 'none';
-                if (dateDisplay) dateDisplay.style.display = 'block';
+                if (grammarQuestion) grammarQuestion.style.display = 'block';
+            } else if (mode === 'modal') {
+                title.textContent = '⚡ Modalverben';
+                title.className = 'grammar';
+                if (clockContainer) clockContainer.style.display = 'none';
+                if (digitalTime) digitalTime.style.display = 'none';
+                if (grammarQuestion) grammarQuestion.style.display = 'block';
             }
 
             // Clean previous state
@@ -1704,11 +1948,127 @@
             return shuffled;
         }
 
+        function generateGrammarQuestion(mode) {
+            if (mode === 'possessive') {
+                const subjects = [
+                    { pronoun: 'ich', possessive: 'mein', name: 'yo' },
+                    { pronoun: 'du', possessive: 'dein', name: 'tú' },
+                    { pronoun: 'er', possessive: 'sein', name: 'él' },
+                    { pronoun: 'sie', possessive: 'ihr', name: 'ella' },
+                    { pronoun: 'wir', possessive: 'unser', name: 'nosotros' },
+                    { pronoun: 'ihr', possessive: 'euer', name: 'vosotros' }
+                ];
+
+                const nouns = [
+                    { word: 'Vater', gender: 'm' },     // der
+                    { word: 'Mutter', gender: 'f' },    // die
+                    { word: 'Buch', gender: 'n' },      // das
+                    { word: 'Bruder', gender: 'm' },    // der
+                    { word: 'Schwester', gender: 'f' }, // die
+                    { word: 'Auto', gender: 'n' },      // das
+                    { word: 'Eltern', gender: 'p' },    // die (pl)
+                    { word: 'Haus', gender: 'n' },      // das
+                    { word: 'Katze', gender: 'f' },     // die
+                    { word: 'Hund', gender: 'm' }       // der
+                ];
+
+                const subject = subjects[Math.floor(Math.random() * subjects.length)];
+                const noun = nouns[Math.floor(Math.random() * nouns.length)];
+
+                // Logic: 
+                // m/n -> mein, dein, sein...
+                // f/p -> meine, deine, seine...
+                let answer = subject.possessive;
+                if (noun.gender === 'f' || noun.gender === 'p') {
+                    if (subject.pronoun === 'euer') {
+                        answer = 'eure'; // irregular (euer -> eure)
+                    } else {
+                        answer += 'e';
+                    }
+                }
+
+                const questionHTML = `
+                    <span class="grammar-pronoun">(${subject.pronoun})</span><br>
+                    Das ist ... <strong>${noun.word}</strong>.
+                `;
+                document.getElementById('grammarQuestion').innerHTML = questionHTML;
+
+                return [answer];
+
+            } else if (mode === 'modal') {
+                const modals = [
+                    { inf: 'müssen', conj: ['muss', 'musst', 'muss', 'müssen', 'müsst', 'müssen'] },
+                    { inf: 'können', conj: ['kann', 'kannst', 'kann', 'können', 'könnt', 'können'] },
+                    { inf: 'wollen', conj: ['will', 'willst', 'will', 'wollen', 'wollt', 'wollen'] }
+                ];
+                const pronouns = ['ich', 'du', 'er', 'wir', 'ihr', 'sie'];
+
+                // Sentence templates: Object + MainVerb
+                const templates = [
+                    { obj: 'nach Hause', verb: 'gehen', hint: 'go home' },
+                    { obj: 'Deutsch', verb: 'lernen', hint: 'learn German' },
+                    { obj: 'eine Pizza', verb: 'essen', hint: 'eat a pizza' },
+                    { obj: 'Wasser', verb: 'trinken', hint: 'drink water' },
+                    { obj: 'Fussball', verb: 'spielen', hint: 'play football' },
+                    { obj: 'Musik', verb: 'hören', hint: 'listen to music' }
+                ];
+
+                const modal = modals[Math.floor(Math.random() * modals.length)];
+                const pIndex = Math.floor(Math.random() * pronouns.length);
+                const pronoun = pronouns[pIndex];
+                const conjugatedModal = modal.conj[pIndex];
+                const template = templates[Math.floor(Math.random() * templates.length)];
+
+                // Construct sentence: Subject + Modal + Object + Verb
+                // Capitalize Subject if 'ich' or others (usually start of sentence)
+                const subjectDisplay = pronoun.charAt(0).toUpperCase() + pronoun.slice(1);
+
+                // Objects might be multi-word, keep them as is or split if we want high difficulty. 
+                // For now, let's keep object as one unit or split if simple.
+                // Let's split simple objects? "nach Hause" -> ["nach", "Hause"] or keep together?
+                // The clock game keeps "Viertel nach" as separate words.
+                // Let's separate words.
+
+                const objectWords = template.obj.split(' ');
+
+                // Full correct answer array
+                const answerList = [subjectDisplay, conjugatedModal, ...objectWords, template.verb];
+
+                // Question Display
+                const questionHTML = `
+                    <div style="font-size: 1.2rem; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                        <div style="color: var(--accent-secondary); font-weight: bold;">
+                             ${pronoun} / ${modal.inf} / ${template.obj} / ${template.verb}
+                        </div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">
+                            Ordena la frase correctamente
+                        </div>
+                    </div>
+                `;
+                document.getElementById('grammarQuestion').innerHTML = questionHTML;
+
+                return answerList;
+            }
+            return [];
+        }
+
         function generateNewTime() {
             selectedWords = [];
             feedback.className = 'feedback';
             correctAnswerDisplay.classList.remove('show');
             answerSlots.className = 'answer-slots';
+
+            if (currentMode === 'possessive' || currentMode === 'modal') {
+                correctAnswer = generateGrammarQuestion(currentMode);
+                let allWords = [...correctAnswer];
+                const distractors = generateDistractors();
+                distractors.forEach(word => {
+                    if (!allWords.includes(word)) allWords.push(word);
+                });
+                renderWordOptions(shuffleArray(allWords));
+                renderAnswerSlots();
+                return;
+            }
 
             if (currentMode === 'unofficial') {
                 currentHour = Math.floor(Math.random() * 12) + 1;
@@ -1779,13 +2139,31 @@
                     // Add random month name
                     const rMonth = Math.floor(Math.random() * 12) + 1;
                     distractors.push(monthNames[rMonth]);
-                } else {
+                } else if (currentMode === 'birthday_numbers') {
                     // Add random month ordinal (capitalized)
                     const rMonth = Math.floor(Math.random() * 12) + 1;
                     const rMonthStem = getOrdinalStem(rMonth);
                     const rMonthSuffix = (rMonth < 20) ? 'ten' : 'sten';
                     let rWord = rMonthStem + rMonthSuffix;
                     rWord = rWord.charAt(0).toUpperCase() + rWord.slice(1);
+                    distractors.push(rWord);
+                }
+            } else if (currentMode === 'possessive') {
+                // return other possessives as distractors
+                const allPoss = ['mein', 'meine', 'dein', 'deine', 'sein', 'seine', 'ihr', 'ihre', 'unser', 'unsere', 'euer', 'eure'];
+                // Pick 3 random
+                for (let i = 0; i < 3; i++) {
+                    distractors.push(allPoss[Math.floor(Math.random() * allPoss.length)]);
+                }
+            } else if (currentMode === 'modal') {
+                // Return other conjugations as distractors
+                const allConj = ['muss', 'musst', 'müssen', 'müsst', 'kann', 'kannst', 'können', 'könnt', 'will', 'willst', 'wollen', 'wollt'];
+                // Also add infinitive as distractor?
+                // And maybe wrong verb form?
+                for (let i = 0; i < 4; i++) {
+                    const rWord = allConj[Math.floor(Math.random() * allConj.length)];
+                    // Avoid adding if it's already in the answer (which we can't check easily here without passing it, 
+                    // but the main function filters it out).
                     distractors.push(rWord);
                 }
             }
