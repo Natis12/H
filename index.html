@@ -174,6 +174,10 @@
             background: linear-gradient(135deg, #ec4899, #be185d);
         }
 
+        .menu-card-icon.birthday {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+        }
+
         .menu-card-content h3 {
             font-size: 1.1rem;
             font-weight: 600;
@@ -392,6 +396,13 @@
 
         .game-header h1.official {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .game-header h1.birthday {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -638,6 +649,18 @@
             color: var(--accent-primary);
             font-family: 'Outfit', monospace;
             text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .date-display {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            font-family: 'Outfit', sans-serif;
+            text-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            display: none;
+            letter-spacing: 2px;
         }
 
         /* Answer Area */
@@ -992,6 +1015,34 @@
             </div>
 
             <div class="menu-section">
+                <h2>🎂 Geburtstage (Fechas)</h2>
+                <div class="menu-card" onclick="startGame('birthday_words')">
+                    <div class="menu-card-icon birthday">📅</div>
+                    <div class="menu-card-content">
+                        <h3>Mit Monatsnamen</h3>
+                        <p>am vierten Mai</p>
+                    </div>
+                    <span class="menu-card-arrow">→</span>
+                </div>
+                <div class="menu-card" onclick="startGame('birthday_numbers')">
+                    <div class="menu-card-icon birthday">🔢</div>
+                    <div class="menu-card-content">
+                        <h3>Mit Zahlen (Oficial)</h3>
+                        <p>am vierten Fünften</p>
+                    </div>
+                    <span class="menu-card-arrow">→</span>
+                </div>
+                <div class="menu-card" onclick="startGame('birthday_writing')">
+                    <div class="menu-card-icon birthday">✍️</div>
+                    <div class="menu-card-content">
+                        <h3>Modo Escritura</h3>
+                        <p>Escribe fechas completas</p>
+                    </div>
+                    <span class="menu-card-arrow">→</span>
+                </div>
+            </div>
+
+            <div class="menu-section">
                 <h2>📚 Aprender</h2>
                 <div class="menu-card" onclick="showScreen('studyScreen')">
                     <div class="menu-card-icon study">📖</div>
@@ -1014,6 +1065,7 @@
             <div class="study-tabs">
                 <button class="study-tab active" onclick="showStudyTab('unofficial')">🗣️ No Oficial</button>
                 <button class="study-tab" onclick="showStudyTab('official')">📢 Oficial</button>
+                <button class="study-tab" onclick="showStudyTab('birthday')">🎂 Geburtstage</button>
             </div>
 
             <div class="study-content">
@@ -1205,147 +1257,209 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ========== GAME SCREEN ========== -->
-        <div class="screen" id="gameScreen">
-            <div class="game-header">
-                <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
-                <h1 id="gameModeTitle" class="unofficial">🗣️ Forma No Oficial</h1>
-            </div>
-
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-value" id="streak">0</div>
-                    <div class="stat-label">Racha</div>
+            <div class="study-tab-content" id="studyBirthday">
+                <div class="study-card">
+                    <h3>🎂 ¿Cómo decir fechas?</h3>
+                    <p>Para decir cuándo es un cumpleaños o una fecha, usamos la preposición <strong>am</strong> (an
+                        dem) + el número ordinal.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value correct" id="correct">0</div>
-                    <div class="stat-label">Correctas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value incorrect" id="incorrect">0</div>
-                    <div class="stat-label">Errores</div>
-                </div>
-            </div>
 
-            <div class="clock-container">
-                <div class="clock">
-                    <div class="clock-face">
-                        <span class="clock-number n12">12</span>
-                        <span class="clock-number n1">1</span>
-                        <span class="clock-number n2">2</span>
-                        <span class="clock-number n3">3</span>
-                        <span class="clock-number n4">4</span>
-                        <span class="clock-number n5">5</span>
-                        <span class="clock-number n6">6</span>
-                        <span class="clock-number n7">7</span>
-                        <span class="clock-number n8">8</span>
-                        <span class="clock-number n9">9</span>
-                        <span class="clock-number n10">10</span>
-                        <span class="clock-number n11">11</span>
+                <div class="study-card">
+                    <h3>1️⃣ Regla de los Ordinales</h3>
+                    <div class="highlight-box">
+                        <h4>De 1 a 19 » terminación -ten</h4>
+                        <p>am vier<strong>ten</strong> Mai (04.05.)</p>
+                        <p>am elf<strong>ten</strong> September (11.09.)</p>
                     </div>
-                    <div class="hour-hand" id="hourHand"></div>
-                    <div class="minute-hand" id="minuteHand"></div>
-                    <div class="clock-center"></div>
-                </div>
-            </div>
-
-            <div class="digital-time" id="digitalTime">07:30</div>
-
-            <div class="answer-section">
-                <p class="instruction">Ordena las palabras para formar la hora correcta:</p>
-
-                <div class="answer-slots" id="answerSlots"></div>
-
-                <div class="word-options" id="wordOptions"></div>
-
-                <div class="feedback" id="feedback"></div>
-
-                <div class="correct-answer-display" id="correctAnswerDisplay">
-                    Respuesta correcta: <span id="correctAnswerText"></span>
-                </div>
-
-                <div class="buttons">
-                    <button class="btn btn-secondary" onclick="clearAnswer()">🔄 Limpiar</button>
-                    <button class="btn btn-primary" onclick="checkAnswer()">✓ Comprobar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== WRITING GAME SCREEN ========== -->
-        <div class="screen" id="writingScreen">
-            <div class="game-header">
-                <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
-                <h1 id="writingModeTitle" class="writing">✍️ Modo Escritura</h1>
-            </div>
-
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-value" id="writingStreak">0</div>
-                    <div class="stat-label">Racha</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value correct" id="writingCorrect">0</div>
-                    <div class="stat-label">Correctas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value incorrect" id="writingIncorrect">0</div>
-                    <div class="stat-label">Errores</div>
-                </div>
-            </div>
-
-            <div class="clock-container">
-                <div class="clock">
-                    <div class="clock-face">
-                        <span class="clock-number n12">12</span>
-                        <span class="clock-number n1">1</span>
-                        <span class="clock-number n2">2</span>
-                        <span class="clock-number n3">3</span>
-                        <span class="clock-number n4">4</span>
-                        <span class="clock-number n5">5</span>
-                        <span class="clock-number n6">6</span>
-                        <span class="clock-number n7">7</span>
-                        <span class="clock-number n8">8</span>
-                        <span class="clock-number n9">9</span>
-                        <span class="clock-number n10">10</span>
-                        <span class="clock-number n11">11</span>
+                    <div class="highlight-box info">
+                        <h4>De 20 en adelante » terminación -sten</h4>
+                        <p>am zwanzig<strong>sten</strong> April (20.04.)</p>
+                        <p>am einunddreißig<strong>sten</strong> Dezember (31.12.)</p>
                     </div>
-                    <div class="hour-hand" id="writingHourHand"></div>
-                    <div class="minute-hand" id="writingMinuteHand"></div>
-                    <div class="clock-center"></div>
-                </div>
-            </div>
-
-            <div class="digital-time" id="writingDigitalTime">07:30</div>
-
-            <div class="writing-section">
-                <div class="input-group">
-                    <label class="input-label">
-                        <span class="badge unofficial">No Oficial</span>
-                        Escribe la forma coloquial:
-                    </label>
-                    <input type="text" class="time-input" id="unofficialInput" placeholder="Es ist..."
-                        autocomplete="off" autocapitalize="off">
-                    <div class="input-feedback" id="unofficialFeedback"></div>
                 </div>
 
-                <div class="input-group">
-                    <label class="input-label">
-                        <span class="badge official">Oficial</span>
-                        Escribe la forma formal:
-                    </label>
-                    <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off"
-                        autocapitalize="off">
-                    <div class="input-feedback" id="officialFeedback"></div>
+                <div class="study-card">
+                    <h3>⚠️ Excepciones importantes</h3>
+                    <p>Algunos números cambian irregularmente:</p>
+                    <table class="time-table">
+                        <tr>
+                            <th>Número</th>
+                            <th>Ordinal</th>
+                        </tr>
+                        <tr>
+                            <td>1 (eins)</td>
+                            <td>am <strong>ers</strong>ten</td>
+                        </tr>
+                        <tr>
+                            <td>3 (drei)</td>
+                            <td>am <strong>drit</strong>ten</td>
+                        </tr>
+                        <tr>
+                            <td>7 (sieben)</td>
+                            <td>am <strong>sieb</strong>ten</td>
+                        </tr>
+                        <tr>
+                            <td>8 (acht)</td>
+                            <td>am <strong>ach</strong>ten (una t)</td>
+                        </tr>
+                    </table>
                 </div>
 
-                <div class="buttons">
-                    <button class="btn btn-secondary" onclick="clearWritingAnswer()">🔄 Limpiar</button>
-                    <button class="btn btn-primary" onclick="checkWritingAnswer()">✓ Comprobar</button>
+                <div class="study-card">
+                    <h3>📅 Dos formas de decirlo</h3>
+                    <p><strong>1. Con nombre del mes:</strong></p>
+                    <p>am dritten <strong>August</strong></p>
+                    <br>
+                    <p><strong>2. Con número (Oficial):</strong></p>
+                    <p>El mes también se convierte en ordinal (Mayúscula):</p>
+                    <p>am dritten <strong>Achten</strong> (03.08.)</p>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ========== GAME SCREEN ========== -->
+    <div class="screen" id="gameScreen">
+        <div class="game-header">
+            <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
+            <h1 id="gameModeTitle" class="unofficial">🗣️ Forma No Oficial</h1>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="streak">0</div>
+                <div class="stat-label">Racha</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value correct" id="correct">0</div>
+                <div class="stat-label">Correctas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value incorrect" id="incorrect">0</div>
+                <div class="stat-label">Errores</div>
+            </div>
+        </div>
+
+        <div class="clock-container">
+            <div class="clock">
+                <div class="clock-face">
+                    <span class="clock-number n12">12</span>
+                    <span class="clock-number n1">1</span>
+                    <span class="clock-number n2">2</span>
+                    <span class="clock-number n3">3</span>
+                    <span class="clock-number n4">4</span>
+                    <span class="clock-number n5">5</span>
+                    <span class="clock-number n6">6</span>
+                    <span class="clock-number n7">7</span>
+                    <span class="clock-number n8">8</span>
+                    <span class="clock-number n9">9</span>
+                    <span class="clock-number n10">10</span>
+                    <span class="clock-number n11">11</span>
+                </div>
+                <div class="hour-hand" id="hourHand"></div>
+                <div class="minute-hand" id="minuteHand"></div>
+                <div class="clock-center"></div>
+            </div>
+        </div>
+
+        <div class="digital-time" id="digitalTime">07:30</div>
+        <div class="date-display" id="dateDisplay">04.09.</div>
+
+        <div class="answer-section">
+            <p class="instruction">Ordena las palabras para formar la hora correcta:</p>
+
+            <div class="answer-slots" id="answerSlots"></div>
+
+            <div class="word-options" id="wordOptions"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="correct-answer-display" id="correctAnswerDisplay">
+                Respuesta correcta: <span id="correctAnswerText"></span>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-secondary" onclick="clearAnswer()">🔄 Limpiar</button>
+                <button class="btn btn-primary" onclick="checkAnswer()">✓ Comprobar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== WRITING GAME SCREEN ========== -->
+    <div class="screen" id="writingScreen">
+        <div class="game-header">
+            <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
+            <h1 id="writingModeTitle" class="writing">✍️ Modo Escritura</h1>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="writingStreak">0</div>
+                <div class="stat-label">Racha</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value correct" id="writingCorrect">0</div>
+                <div class="stat-label">Correctas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value incorrect" id="writingIncorrect">0</div>
+                <div class="stat-label">Errores</div>
+            </div>
+        </div>
+
+        <div class="clock-container">
+            <div class="clock">
+                <div class="clock-face">
+                    <span class="clock-number n12">12</span>
+                    <span class="clock-number n1">1</span>
+                    <span class="clock-number n2">2</span>
+                    <span class="clock-number n3">3</span>
+                    <span class="clock-number n4">4</span>
+                    <span class="clock-number n5">5</span>
+                    <span class="clock-number n6">6</span>
+                    <span class="clock-number n7">7</span>
+                    <span class="clock-number n8">8</span>
+                    <span class="clock-number n9">9</span>
+                    <span class="clock-number n10">10</span>
+                    <span class="clock-number n11">11</span>
+                </div>
+                <div class="hour-hand" id="writingHourHand"></div>
+                <div class="minute-hand" id="writingMinuteHand"></div>
+                <div class="clock-center"></div>
+            </div>
+        </div>
+
+        <div class="digital-time" id="writingDigitalTime">07:30</div>
+        <div class="date-display" id="writingDateDisplay" style="display:none; font-size: 3rem; margin: 30px 0;">04.09.
+        </div>
+
+        <div class="writing-section">
+            <div class="input-group">
+                <label class="input-label" id="label1">
+                    <span class="badge unofficial" id="badge1">No Oficial</span>
+                    <span id="text1">Escribe la forma coloquial:</span>
+                </label>
+                <input type="text" class="time-input" id="unofficialInput" placeholder="Es ist..." autocomplete="off"
+                    autocapitalize="off">
+                <div class="input-feedback" id="unofficialFeedback"></div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" id="label2">
+                    <span class="badge official" id="badge2">Oficial</span>
+                    <span id="text2">Escribe la forma formal:</span>
+                </label>
+                <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off"
+                    autocapitalize="off">
+                <div class="input-feedback" id="officialFeedback"></div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-secondary" onclick="clearWritingAnswer()">🔄 Limpiar</button>
+                <button class="btn btn-primary" onclick="checkWritingAnswer()">✓ Comprobar</button>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -1360,11 +1474,14 @@
             document.querySelectorAll('.study-tab-content').forEach(c => c.classList.remove('active'));
 
             if (tab === 'unofficial') {
-                document.querySelector('.study-tab:first-child').classList.add('active');
+                document.querySelector('.study-tab:nth-child(1)').classList.add('active');
                 document.getElementById('studyUnofficial').classList.add('active');
-            } else {
-                document.querySelector('.study-tab:last-child').classList.add('active');
+            } else if (tab === 'official') {
+                document.querySelector('.study-tab:nth-child(2)').classList.add('active');
                 document.getElementById('studyOfficial').classList.add('active');
+            } else {
+                document.querySelector('.study-tab:nth-child(3)').classList.add('active');
+                document.getElementById('studyBirthday').classList.add('active');
             }
         }
 
@@ -1374,13 +1491,37 @@
             updateStats();
 
             const title = document.getElementById('gameModeTitle');
+            const clockContainer = document.querySelector('.clock-container');
+            const digitalTime = document.getElementById('digitalTime');
+            const dateDisplay = document.getElementById('dateDisplay');
+
+            // Reset visibility
+            if (clockContainer) clockContainer.style.display = 'flex';
+            if (digitalTime) digitalTime.style.display = 'block';
+            if (dateDisplay) dateDisplay.style.display = 'none';
+
             if (mode === 'unofficial') {
                 title.textContent = '🗣️ Forma No Oficial';
                 title.className = 'unofficial';
-            } else {
+            } else if (mode === 'official') {
                 title.textContent = '📢 Forma Oficial';
                 title.className = 'official';
+            } else if (mode === 'birthday_words') {
+                title.textContent = '📅 Geburtstage (Nombres)';
+                title.className = 'birthday';
+                if (clockContainer) clockContainer.style.display = 'none';
+                if (digitalTime) digitalTime.style.display = 'none';
+                if (dateDisplay) dateDisplay.style.display = 'block';
+            } else if (mode === 'birthday_numbers') {
+                title.textContent = '🔢 Geburtstage (Números)';
+                title.className = 'birthday';
+                if (clockContainer) clockContainer.style.display = 'none';
+                if (digitalTime) digitalTime.style.display = 'none';
+                if (dateDisplay) dateDisplay.style.display = 'block';
             }
+
+            // Clean previous state
+            if (typeof clearAnswer === 'function') clearAnswer();
 
             showScreen('gameScreen');
             generateNewTime();
@@ -1414,9 +1555,16 @@
             11: 'elf', 12: 'zwölf'
         };
 
+        const monthNames = [
+            "", "Januar", "Februar", "März", "April", "Mai", "Juni",
+            "Juli", "August", "September", "Oktober", "November", "Dezember"
+        ];
+
         let currentMode = 'unofficial';
         let currentHour = 7;
         let currentMinute = 30;
+        let currentDay = 1;
+        let currentMonth = 1;
         let correctAnswer = [];
         let selectedWords = [];
         let stats = { streak: 0, correct: 0, incorrect: 0 };
@@ -1486,6 +1634,37 @@
             }
         }
 
+        function getOrdinalStem(n) {
+            // Irregular stems
+            if (n === 1) return 'ers';
+            if (n === 3) return 'drit';
+            if (n === 7) return 'sieb';
+            if (n === 8) return 'ach'; // acht -> ach + ten
+
+            // Regular stems
+            return numberWords[n];
+        }
+
+        function generateBirthday(day, month, mode) {
+            const dayStem = getOrdinalStem(day);
+            const daySuffix = (day < 20) ? 'ten' : 'sten';
+            const dayWord = dayStem + daySuffix;
+
+            if (mode === 'birthday_words') {
+                // "am vierten Mai"
+                return ['am', dayWord, monthNames[month]];
+            } else {
+                // "am vierten Fünften"
+                const monthStem = getOrdinalStem(month);
+                const monthSuffix = (month < 20) ? 'ten' : 'sten';
+                let monthWord = monthStem + monthSuffix;
+                // Capitalize noun
+                monthWord = monthWord.charAt(0).toUpperCase() + monthWord.slice(1);
+
+                return ['am', dayWord, monthWord];
+            }
+        }
+
         function shuffleArray(array) {
             const shuffled = [...array];
             for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1504,17 +1683,35 @@
             if (currentMode === 'unofficial') {
                 currentHour = Math.floor(Math.random() * 12) + 1;
                 currentMinute = Math.floor(Math.random() * 12) * 5;
-            } else {
+            } else if (currentMode === 'official') {
                 currentHour = Math.floor(Math.random() * 24);
                 const useCommon = Math.random() > 0.3;
                 currentMinute = useCommon ? Math.floor(Math.random() * 12) * 5 : Math.floor(Math.random() * 60);
+            } else if (currentMode.startsWith('birthday')) {
+                // Generate valid date
+                currentMonth = Math.floor(Math.random() * 12) + 1;
+                // Days in month approx (simplified for game, or accurate)
+                // Let's be accurate enough: 1-28 for all to be safe, or logic
+                const daysInMonth = new Date(2023, currentMonth, 0).getDate();
+                currentDay = Math.floor(Math.random() * daysInMonth) + 1;
+
+                // Update display
+                const dayStr = String(currentDay).padStart(2, '0');
+                const monthStr = String(currentMonth).padStart(2, '0');
+                if (document.getElementById('dateDisplay')) {
+                    document.getElementById('dateDisplay').textContent = `${dayStr}.${monthStr}.`;
+                }
             }
 
             updateClock(currentHour, currentMinute);
 
-            correctAnswer = currentMode === 'unofficial'
-                ? generateUnofficialTime(currentHour, currentMinute)
-                : generateOfficialTime(currentHour, currentMinute);
+            if (currentMode === 'unofficial') {
+                correctAnswer = generateUnofficialTime(currentHour, currentMinute);
+            } else if (currentMode === 'official') {
+                correctAnswer = generateOfficialTime(currentHour, currentMinute);
+            } else {
+                correctAnswer = generateBirthday(currentDay, currentMonth, currentMode);
+            }
 
             let allWords = [...correctAnswer];
             const distractors = generateDistractors();
@@ -1535,10 +1732,32 @@
                 distractors.push(...common.slice(0, 2));
                 distractors.push(hourWords[Math.floor(Math.random() * 12) + 1]);
                 distractors.push(times[Math.floor(Math.random() * times.length)]);
-            } else {
+            } else if (currentMode === 'official') {
                 distractors.push(numberWords[Math.floor(Math.random() * 60)]);
                 distractors.push(hourWords[Math.floor(Math.random() * 12) + 1]);
                 distractors.push('Uhr');
+            } else if (currentMode.startsWith('birthday')) {
+                distractors.push('am');
+
+                // Add random day ordinal
+                const rDay = Math.floor(Math.random() * 31) + 1;
+                const rDayStem = getOrdinalStem(rDay);
+                const rDaySuffix = (rDay < 20) ? 'ten' : 'sten';
+                distractors.push(rDayStem + rDaySuffix);
+
+                if (currentMode === 'birthday_words') {
+                    // Add random month name
+                    const rMonth = Math.floor(Math.random() * 12) + 1;
+                    distractors.push(monthNames[rMonth]);
+                } else {
+                    // Add random month ordinal (capitalized)
+                    const rMonth = Math.floor(Math.random() * 12) + 1;
+                    const rMonthStem = getOrdinalStem(rMonth);
+                    const rMonthSuffix = (rMonth < 20) ? 'ten' : 'sten';
+                    let rWord = rMonthStem + rMonthSuffix;
+                    rWord = rWord.charAt(0).toUpperCase() + rWord.slice(1);
+                    distractors.push(rWord);
+                }
             }
 
             return distractors;
@@ -1634,14 +1853,72 @@
         let writingStats = { streak: 0, correct: 0, incorrect: 0 };
         let writingHour = 7;
         let writingMinute = 30;
+        let writingDay = 1;
+        let writingMonth = 1;
+        let writingMode = 'time'; // 'time' or 'birthday'
         let correctUnofficialAnswer = '';
         let correctOfficialAnswer = '';
 
-        function startWritingGame() {
+        function startWritingGame(mode = 'time') {
+            writingMode = mode;
             writingStats = { streak: 0, correct: 0, incorrect: 0 };
             updateWritingStats();
             showScreen('writingScreen');
-            generateWritingTime();
+
+            // Adjust UI based on mode
+            const title = document.getElementById('writingModeTitle');
+            const clock = document.querySelector('#writingScreen .clock-container');
+            const digi = document.getElementById('writingDigitalTime');
+            const date = document.getElementById('writingDateDisplay');
+
+            const badge1 = document.getElementById('badge1');
+            const text1 = document.getElementById('text1');
+            const badge2 = document.getElementById('badge2');
+            const text2 = document.getElementById('text2');
+            const input1 = document.getElementById('unofficialInput');
+            const input2 = document.getElementById('officialInput');
+
+            // Reset classes
+            badge1.className = 'badge';
+            badge2.className = 'badge';
+
+            if (writingMode === 'birthday') {
+                title.textContent = '✍️ Escribe el Cumpleaños';
+                title.className = 'birthday';
+                clock.style.display = 'none';
+                digi.style.display = 'none';
+                date.style.display = 'block';
+
+                badge1.textContent = 'Con Mes';
+                badge1.classList.add('birthday');
+                text1.textContent = 'Ej: am vierten Mai';
+                input1.placeholder = 'am ...';
+
+                badge2.textContent = 'Con Números';
+                badge2.classList.add('birthday');
+                text2.textContent = 'Ej: am vierten Fünften';
+                input2.placeholder = 'am ...';
+
+                generateWritingDate();
+            } else {
+                title.textContent = '✍️ Modo Escritura';
+                title.className = 'writing';
+                clock.style.display = 'flex';
+                digi.style.display = 'block';
+                date.style.display = 'none';
+
+                badge1.textContent = 'No Oficial';
+                badge1.classList.add('unofficial');
+                text1.textContent = 'Escribe la forma coloquial:';
+                input1.placeholder = 'Es ist...';
+
+                badge2.textContent = 'Oficial';
+                badge2.classList.add('official');
+                text2.textContent = 'Escribe la forma formal:';
+                input2.placeholder = 'Es ist...';
+
+                generateWritingTime();
+            }
         }
 
         function updateWritingClock(hour, minute) {
@@ -1678,6 +1955,29 @@
             // Generate correct answers
             correctUnofficialAnswer = generateUnofficialTime(writingHour, writingMinute).join(' ');
             correctOfficialAnswer = generateOfficialTime(writingHour, writingMinute).join(' ');
+        }
+
+        function generateWritingDate() {
+            // Clear inputs
+            document.getElementById('unofficialInput').value = '';
+            document.getElementById('officialInput').value = '';
+            document.getElementById('unofficialInput').className = 'time-input';
+            document.getElementById('officialInput').className = 'time-input';
+            document.getElementById('unofficialFeedback').className = 'input-feedback';
+            document.getElementById('officialFeedback').className = 'input-feedback';
+
+            // Generate date
+            writingMonth = Math.floor(Math.random() * 12) + 1;
+            const daysInMonth = new Date(2023, writingMonth, 0).getDate();
+            writingDay = Math.floor(Math.random() * daysInMonth) + 1;
+
+            const dayStr = String(writingDay).padStart(2, '0');
+            const monthStr = String(writingMonth).padStart(2, '0');
+            document.getElementById('writingDateDisplay').textContent = `${dayStr}.${monthStr}.`;
+
+            // Generate answers
+            correctUnofficialAnswer = generateBirthday(writingDay, writingMonth, 'birthday_words').join(' ');
+            correctOfficialAnswer = generateBirthday(writingDay, writingMonth, 'birthday_numbers').join(' ');
         }
 
         function normalizeAnswer(text) {
@@ -1730,10 +2030,12 @@
 
             // Update stats
             const bothCorrect = unofficialCorrect && officialCorrect;
+
             if (bothCorrect) {
                 writingStats.correct++;
                 writingStats.streak++;
-                setTimeout(() => generateWritingTime(), 1500);
+                const delay = writingMode === 'birthday' ? generateWritingDate : generateWritingTime;
+                setTimeout(delay, 1500);
             } else {
                 writingStats.incorrect++;
                 writingStats.streak = 0;
@@ -1761,7 +2063,9 @@
         const originalStartGame = startGame;
         startGame = function (mode) {
             if (mode === 'writing') {
-                startWritingGame();
+                startWritingGame('time');
+            } else if (mode === 'birthday_writing') {
+                startWritingGame('birthday');
             } else {
                 originalStartGame(mode);
             }
