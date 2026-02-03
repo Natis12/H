@@ -1256,210 +1256,210 @@
                             los números directamente.</p>
                     </div>
                 </div>
-            </div>
-            <div class="study-tab-content" id="studyBirthday">
-                <div class="study-card">
-                    <h3>🎂 ¿Cómo decir fechas?</h3>
-                    <p>Para decir cuándo es un cumpleaños o una fecha, usamos la preposición <strong>am</strong> (an
-                        dem) + el número ordinal.</p>
-                </div>
-
-                <div class="study-card">
-                    <h3>1️⃣ Regla de los Ordinales</h3>
-                    <div class="highlight-box">
-                        <h4>De 1 a 19 » terminación -ten</h4>
-                        <p>am vier<strong>ten</strong> Mai (04.05.)</p>
-                        <p>am elf<strong>ten</strong> September (11.09.)</p>
+                <div class="study-tab-content" id="studyBirthday">
+                    <div class="study-card">
+                        <h3>🎂 ¿Cómo decir fechas?</h3>
+                        <p>Para decir cuándo es un cumpleaños o una fecha, usamos la preposición <strong>am</strong> (an
+                            dem) + el número ordinal.</p>
                     </div>
-                    <div class="highlight-box info">
-                        <h4>De 20 en adelante » terminación -sten</h4>
-                        <p>am zwanzig<strong>sten</strong> April (20.04.)</p>
-                        <p>am einunddreißig<strong>sten</strong> Dezember (31.12.)</p>
+
+                    <div class="study-card">
+                        <h3>1️⃣ Regla de los Ordinales</h3>
+                        <div class="highlight-box">
+                            <h4>De 1 a 19 » terminación -ten</h4>
+                            <p>am vier<strong>ten</strong> Mai (04.05.)</p>
+                            <p>am elf<strong>ten</strong> September (11.09.)</p>
+                        </div>
+                        <div class="highlight-box info">
+                            <h4>De 20 en adelante » terminación -sten</h4>
+                            <p>am zwanzig<strong>sten</strong> April (20.04.)</p>
+                            <p>am einunddreißig<strong>sten</strong> Dezember (31.12.)</p>
+                        </div>
+                    </div>
+
+                    <div class="study-card">
+                        <h3>⚠️ Excepciones importantes</h3>
+                        <p>Algunos números cambian irregularmente:</p>
+                        <table class="time-table">
+                            <tr>
+                                <th>Número</th>
+                                <th>Ordinal</th>
+                            </tr>
+                            <tr>
+                                <td>1 (eins)</td>
+                                <td>am <strong>ers</strong>ten</td>
+                            </tr>
+                            <tr>
+                                <td>3 (drei)</td>
+                                <td>am <strong>drit</strong>ten</td>
+                            </tr>
+                            <tr>
+                                <td>7 (sieben)</td>
+                                <td>am <strong>sieb</strong>ten</td>
+                            </tr>
+                            <tr>
+                                <td>8 (acht)</td>
+                                <td>am <strong>ach</strong>ten (una t)</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="study-card">
+                        <h3>📅 Dos formas de decirlo</h3>
+                        <p><strong>1. Con nombre del mes:</strong></p>
+                        <p>am dritten <strong>August</strong></p>
+                        <br>
+                        <p><strong>2. Con número (Oficial):</strong></p>
+                        <p>El mes también se convierte en ordinal (Mayúscula):</p>
+                        <p>am dritten <strong>Achten</strong> (03.08.)</p>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="study-card">
-                    <h3>⚠️ Excepciones importantes</h3>
-                    <p>Algunos números cambian irregularmente:</p>
-                    <table class="time-table">
-                        <tr>
-                            <th>Número</th>
-                            <th>Ordinal</th>
-                        </tr>
-                        <tr>
-                            <td>1 (eins)</td>
-                            <td>am <strong>ers</strong>ten</td>
-                        </tr>
-                        <tr>
-                            <td>3 (drei)</td>
-                            <td>am <strong>drit</strong>ten</td>
-                        </tr>
-                        <tr>
-                            <td>7 (sieben)</td>
-                            <td>am <strong>sieb</strong>ten</td>
-                        </tr>
-                        <tr>
-                            <td>8 (acht)</td>
-                            <td>am <strong>ach</strong>ten (una t)</td>
-                        </tr>
-                    </table>
+        <!-- ========== GAME SCREEN ========== -->
+        <div class="screen" id="gameScreen">
+            <div class="game-header">
+                <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
+                <h1 id="gameModeTitle" class="unofficial">🗣️ Forma No Oficial</h1>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value" id="streak">0</div>
+                    <div class="stat-label">Racha</div>
                 </div>
-
-                <div class="study-card">
-                    <h3>📅 Dos formas de decirlo</h3>
-                    <p><strong>1. Con nombre del mes:</strong></p>
-                    <p>am dritten <strong>August</strong></p>
-                    <br>
-                    <p><strong>2. Con número (Oficial):</strong></p>
-                    <p>El mes también se convierte en ordinal (Mayúscula):</p>
-                    <p>am dritten <strong>Achten</strong> (03.08.)</p>
+                <div class="stat-item">
+                    <div class="stat-value correct" id="correct">0</div>
+                    <div class="stat-label">Correctas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value incorrect" id="incorrect">0</div>
+                    <div class="stat-label">Errores</div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- ========== GAME SCREEN ========== -->
-    <div class="screen" id="gameScreen">
-        <div class="game-header">
-            <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
-            <h1 id="gameModeTitle" class="unofficial">🗣️ Forma No Oficial</h1>
-        </div>
-
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value" id="streak">0</div>
-                <div class="stat-label">Racha</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value correct" id="correct">0</div>
-                <div class="stat-label">Correctas</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value incorrect" id="incorrect">0</div>
-                <div class="stat-label">Errores</div>
-            </div>
-        </div>
-
-        <div class="clock-container">
-            <div class="clock">
-                <div class="clock-face">
-                    <span class="clock-number n12">12</span>
-                    <span class="clock-number n1">1</span>
-                    <span class="clock-number n2">2</span>
-                    <span class="clock-number n3">3</span>
-                    <span class="clock-number n4">4</span>
-                    <span class="clock-number n5">5</span>
-                    <span class="clock-number n6">6</span>
-                    <span class="clock-number n7">7</span>
-                    <span class="clock-number n8">8</span>
-                    <span class="clock-number n9">9</span>
-                    <span class="clock-number n10">10</span>
-                    <span class="clock-number n11">11</span>
+            <div class="clock-container">
+                <div class="clock">
+                    <div class="clock-face">
+                        <span class="clock-number n12">12</span>
+                        <span class="clock-number n1">1</span>
+                        <span class="clock-number n2">2</span>
+                        <span class="clock-number n3">3</span>
+                        <span class="clock-number n4">4</span>
+                        <span class="clock-number n5">5</span>
+                        <span class="clock-number n6">6</span>
+                        <span class="clock-number n7">7</span>
+                        <span class="clock-number n8">8</span>
+                        <span class="clock-number n9">9</span>
+                        <span class="clock-number n10">10</span>
+                        <span class="clock-number n11">11</span>
+                    </div>
+                    <div class="hour-hand" id="hourHand"></div>
+                    <div class="minute-hand" id="minuteHand"></div>
+                    <div class="clock-center"></div>
                 </div>
-                <div class="hour-hand" id="hourHand"></div>
-                <div class="minute-hand" id="minuteHand"></div>
-                <div class="clock-center"></div>
-            </div>
-        </div>
-
-        <div class="digital-time" id="digitalTime">07:30</div>
-        <div class="date-display" id="dateDisplay">04.09.</div>
-
-        <div class="answer-section">
-            <p class="instruction">Ordena las palabras para formar la hora correcta:</p>
-
-            <div class="answer-slots" id="answerSlots"></div>
-
-            <div class="word-options" id="wordOptions"></div>
-
-            <div class="feedback" id="feedback"></div>
-
-            <div class="correct-answer-display" id="correctAnswerDisplay">
-                Respuesta correcta: <span id="correctAnswerText"></span>
             </div>
 
-            <div class="buttons">
-                <button class="btn btn-secondary" onclick="clearAnswer()">🔄 Limpiar</button>
-                <button class="btn btn-primary" onclick="checkAnswer()">✓ Comprobar</button>
-            </div>
-        </div>
-    </div>
+            <div class="digital-time" id="digitalTime">07:30</div>
+            <div class="date-display" id="dateDisplay">04.09.</div>
 
-    <!-- ========== WRITING GAME SCREEN ========== -->
-    <div class="screen" id="writingScreen">
-        <div class="game-header">
-            <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
-            <h1 id="writingModeTitle" class="writing">✍️ Modo Escritura</h1>
-        </div>
+            <div class="answer-section">
+                <p class="instruction">Ordena las palabras para formar la hora correcta:</p>
 
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value" id="writingStreak">0</div>
-                <div class="stat-label">Racha</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value correct" id="writingCorrect">0</div>
-                <div class="stat-label">Correctas</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value incorrect" id="writingIncorrect">0</div>
-                <div class="stat-label">Errores</div>
-            </div>
-        </div>
+                <div class="answer-slots" id="answerSlots"></div>
 
-        <div class="clock-container">
-            <div class="clock">
-                <div class="clock-face">
-                    <span class="clock-number n12">12</span>
-                    <span class="clock-number n1">1</span>
-                    <span class="clock-number n2">2</span>
-                    <span class="clock-number n3">3</span>
-                    <span class="clock-number n4">4</span>
-                    <span class="clock-number n5">5</span>
-                    <span class="clock-number n6">6</span>
-                    <span class="clock-number n7">7</span>
-                    <span class="clock-number n8">8</span>
-                    <span class="clock-number n9">9</span>
-                    <span class="clock-number n10">10</span>
-                    <span class="clock-number n11">11</span>
+                <div class="word-options" id="wordOptions"></div>
+
+                <div class="feedback" id="feedback"></div>
+
+                <div class="correct-answer-display" id="correctAnswerDisplay">
+                    Respuesta correcta: <span id="correctAnswerText"></span>
                 </div>
-                <div class="hour-hand" id="writingHourHand"></div>
-                <div class="minute-hand" id="writingMinuteHand"></div>
-                <div class="clock-center"></div>
+
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="clearAnswer()">🔄 Limpiar</button>
+                    <button class="btn btn-primary" onclick="checkAnswer()">✓ Comprobar</button>
+                </div>
             </div>
         </div>
 
-        <div class="digital-time" id="writingDigitalTime">07:30</div>
-        <div class="date-display" id="writingDateDisplay" style="display:none; font-size: 3rem; margin: 30px 0;">04.09.
+        <!-- ========== WRITING GAME SCREEN ========== -->
+        <div class="screen" id="writingScreen">
+            <div class="game-header">
+                <button class="back-btn" onclick="showScreen('homeScreen')">←</button>
+                <h1 id="writingModeTitle" class="writing">✍️ Modo Escritura</h1>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value" id="writingStreak">0</div>
+                    <div class="stat-label">Racha</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value correct" id="writingCorrect">0</div>
+                    <div class="stat-label">Correctas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value incorrect" id="writingIncorrect">0</div>
+                    <div class="stat-label">Errores</div>
+                </div>
+            </div>
+
+            <div class="clock-container">
+                <div class="clock">
+                    <div class="clock-face">
+                        <span class="clock-number n12">12</span>
+                        <span class="clock-number n1">1</span>
+                        <span class="clock-number n2">2</span>
+                        <span class="clock-number n3">3</span>
+                        <span class="clock-number n4">4</span>
+                        <span class="clock-number n5">5</span>
+                        <span class="clock-number n6">6</span>
+                        <span class="clock-number n7">7</span>
+                        <span class="clock-number n8">8</span>
+                        <span class="clock-number n9">9</span>
+                        <span class="clock-number n10">10</span>
+                        <span class="clock-number n11">11</span>
+                    </div>
+                    <div class="hour-hand" id="writingHourHand"></div>
+                    <div class="minute-hand" id="writingMinuteHand"></div>
+                    <div class="clock-center"></div>
+                </div>
+            </div>
+
+            <div class="digital-time" id="writingDigitalTime">07:30</div>
+            <div class="date-display" id="writingDateDisplay" style="display:none; font-size: 3rem; margin: 30px 0;">
+                04.09.
+            </div>
+
+            <div class="writing-section">
+                <div class="input-group">
+                    <label class="input-label" id="label1">
+                        <span class="badge unofficial" id="badge1">No Oficial</span>
+                        <span id="text1">Escribe la forma coloquial:</span>
+                    </label>
+                    <input type="text" class="time-input" id="unofficialInput" placeholder="Es ist..."
+                        autocomplete="off" autocapitalize="off">
+                    <div class="input-feedback" id="unofficialFeedback"></div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" id="label2">
+                        <span class="badge official" id="badge2">Oficial</span>
+                        <span id="text2">Escribe la forma formal:</span>
+                    </label>
+                    <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off"
+                        autocapitalize="off">
+                    <div class="input-feedback" id="officialFeedback"></div>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="clearWritingAnswer()">🔄 Limpiar</button>
+                    <button class="btn btn-primary" onclick="checkWritingAnswer()">✓ Comprobar</button>
+                </div>
+            </div>
         </div>
-
-        <div class="writing-section">
-            <div class="input-group">
-                <label class="input-label" id="label1">
-                    <span class="badge unofficial" id="badge1">No Oficial</span>
-                    <span id="text1">Escribe la forma coloquial:</span>
-                </label>
-                <input type="text" class="time-input" id="unofficialInput" placeholder="Es ist..." autocomplete="off"
-                    autocapitalize="off">
-                <div class="input-feedback" id="unofficialFeedback"></div>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label" id="label2">
-                    <span class="badge official" id="badge2">Oficial</span>
-                    <span id="text2">Escribe la forma formal:</span>
-                </label>
-                <input type="text" class="time-input" id="officialInput" placeholder="Es ist..." autocomplete="off"
-                    autocapitalize="off">
-                <div class="input-feedback" id="officialFeedback"></div>
-            </div>
-
-            <div class="buttons">
-                <button class="btn btn-secondary" onclick="clearWritingAnswer()">🔄 Limpiar</button>
-                <button class="btn btn-primary" onclick="checkWritingAnswer()">✓ Comprobar</button>
-            </div>
-        </div>
-    </div>
     </div>
 
     <script>
